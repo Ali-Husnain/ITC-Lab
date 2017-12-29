@@ -11,7 +11,7 @@ print A
 
 
 def Temperature(x ,y):
-    if type(x) == int or type(x) == float:
+    if not type(x) == int or type(x) == float:
         print 'Invalid magnitude'
         return a
         
@@ -31,11 +31,15 @@ a = input('''please_input_magnitude:  ''')
 b = raw_input('''please_input_unit: ''')
 Temperature(a ,b)
 
+
+
 #### END ####
 #### Question no.3 #####
 
+from random import randint
 def guess(x):
-    secret_number = 6
+    
+    secret_number = randint(0,9)
     if x == secret_number:
         print 'Well guessed!'
         
@@ -43,7 +47,6 @@ def guess(x):
         x = input('''try agaim: ''')
         return guess(x)
         
-    print 'You guessed after',counter,'tries.'
     
 x = input('''give guess in range from 0 to 9: ''')
 guess(x)
@@ -113,8 +116,8 @@ while t>1:
         print x*' '+' a '*4
         s+=1
         continue
-    ##____________##
-   ##==>For 'D' Pattern<==##
+ 
+   #==>For 'D' Pattern<==
    
 n = 4
 while n>1:
@@ -125,8 +128,8 @@ while n>1:
     if n == 1:
         print 'D '*3
         
- ##____________##   
-   ##==>For '6' Pattern<==##
+        
+   #==>For '6' Pattern<==
    
 for n in range(1 ,8):
     if n == 7 or n == 4 or n == 1:
@@ -138,8 +141,8 @@ for n in range(1 ,8):
     if n == 3 or n ==2:
         print '6' *1
         
-     ## ____________##
-   ##==>For 'X' Pattern<==##
+     
+   #==>For 'X' Pattern<==
    
 s = 3
 r = 7
@@ -161,5 +164,34 @@ if r<4:
         s+=1
         r-=1
         
-    ##____________##
+    
 #### END ####
+#### Question no.9####
+
+pA = input('''population of A:''') 
+pB = input('''population of B:''')
+gA= input('''growth rate of A(input only number  e.g 1 ,3.4...):''')
+gB =input('''growth rate of B(input only number  e.g 1 ,3.4...):''')
+
+def calculation(pA,pB,gA,gB):
+    if type(pA) == str or type(pB)==str or type(gA)==str or type(gB)==str:
+        print 'Please! input integers or float values'
+    if pA == pB or gA==gB:
+        print 'invalid commands'
+    if pA>pB or gA<gB:
+        print 'invalid commands'
+    Years = 0
+    if pA<pB and gA>gB:
+        while pA<pB:
+            growthA = (pA/100)*gA
+            pA = pA + growthA
+            growthB = (pB/100)*gB
+            pB = pB + growthB
+            Years +=1
+            
+    print 'After',Years,',Population of B = ',pB
+    print 'After',Years,',Population of A = ',pA
+        
+calculation(pA,pB,gA,gB)
+
+#### END #####
